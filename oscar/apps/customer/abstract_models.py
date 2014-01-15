@@ -91,6 +91,7 @@ if hasattr(auth_models, 'BaseUserManager'):
             newly registered user.
             """
             ProductAlert = self.alerts.model
+
             alerts = ProductAlert.objects.filter(
                 email=self.email, status=ProductAlert.ACTIVE)
             alerts.update(user=self, key=None, email=None)
