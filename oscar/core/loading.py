@@ -90,7 +90,10 @@ def get_classes(module_label, classnames):
     app_label = module_label.split('.')[0]
     if '.' in app_module_path:
         base_package = app_module_path.rsplit('.' + app_label, 1)[0]
-        local_app = "%s.%s" % (base_package, module_label)
+        if app_module_path != base_package:
+            local_app = "%s.%s" % (base_package, module_label)
+        else:
+            local_app = module_label
     else:
         local_app = module_label
     try:
